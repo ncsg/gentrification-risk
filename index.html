@@ -2,32 +2,158 @@
        "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>CCI - Regional Early Warning System for Displacement</title>
+<title>CCI Regional Early Warning System for Displacement</title>
 
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 
-    <style>
-      html, body, #map {
-        height: 100%;
-        padding: 0;
-        margin: 0;
-      }
-    </style>
+<style>
+html, body {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	font-family: 'Open Sans', sans-serif;
+}
+#topBanner {
+	background-color: #fff;
+	padding: 10px;
+	padding-left: 50px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 22px;
+	font-weight: 400;
+}
+#cciLogo {
+	color: #863995;
+	opacity: 0.8;
+}
+#cciLogo:hover {
+	text-decoration: none;
+}
+#mapContainer {
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	margin-left: 0;
+	margin-right: 0;
+	width: 100%;
+	height: 450px;
+	padding: 0;
+}
+#map {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+/* overrides default style for legends */
+#map .cartodb-legend-stack .cartodb-legend li {
+	font-family: 'Open Sans', sans-serif;
+	color: black;
+	font-size: 12px;
+	font-weight: normal;
+	text-transform: none;
+}
+#map .cartodb-legend-stack .cartodb-legend li .bullet {
+	height: 10px;
+	width: 10px;
+}
+/* overrides default style for tooltips */
+#map .cartodb-tooltip-content {
+	padding: 6px;
+}
+#map .cartodb-tooltip-content p {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 11px;
+}
+#layerNav {
+	position: absolute;
+	top: 100px;
+	left: 70px;
+	padding: 0px;
+	font-size: 12px;
+}
+#textContent {
+	padding: 30px; 
+	padding-left: 50px;
+}
+</style>
 
+<!-- CartoDB (requires some resources, so easier to load from CDN -->
 <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+
+<!-- JQuery, required for Bootstrap -->
+<script src="lib/jquery.min.js"></script>
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="lib/bootstrap.css">
+<script src="lib/bootstrap.js"></script>
+
+<!-- Google Fonts -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
 </head>
 
 <body>
-<div id="map"></div>
+	
+<div id="topBanner">
+	<a href='http://communityinnovation.berkeley.edu/'><img src='cci-logo.png' height='60'></a> &nbsp;&nbsp;&nbsp; CCI Regional Early Warning System for Displacement in the Bay Area</div>
+	
+<div id="mapContainer"></div>
+
+<div id ="layerNav">
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Choose another data series...
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><a onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/da4203d8-1899-11e5-b7fd-0e018d66dc29/viz.json'); return false;">
+	    CCI displacement typology</a></li>
+    <li><a onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/96051a6a-1cff-11e5-842f-0e9d821ea90d/viz.json'); return false;">
+	    Census tract population (2013)</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+</div>
+</div>
+
+<div id="textContent">Text content</div>
 
 <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
 <script>
+
+// set the initial map options and url here
+var INITIAL_MAP_SETTINGS = {
+	center_lat: 37.8,
+	center_lon: -122.3,
+	zoom: 11
+}
+var INITIAL_VISJSON_URL = 'https://cci-displacement.cartodb.com/api/v2/viz/da4203d8-1899-11e5-b7fd-0e018d66dc29/viz.json';
+var currentVis;
+
+function setUpMap(visjsonURL, mapSettings) {
+	$("#mapContainer").append("<div id='map'></div>");
+	cartodb.createVis('map', visjsonURL, mapSettings)
+		.done(function(vis, layers) {
+			currentVis = vis;
+		});
+}
+
+function swapMap(visjsonURL) {
+	var currentMapSettings = {
+		center_lat: currentVis.getNativeMap().getCenter().lat,
+		center_lon: currentVis.getNativeMap().getCenter().lng,
+		zoom: currentVis.getNativeMap().getZoom()
+	}
+	currentVis.remove();
+	setUpMap(visjsonURL, currentMapSettings);
+}
+
 window.onload = function() {
-  cartodb.createVis('map', 'https://cci-displacement.cartodb.com/api/v2_1/viz/da4203d8-1899-11e5-b7fd-0e018d66dc29/viz.json');
+	setUpMap(INITIAL_VISJSON_URL, INITIAL_MAP_SETTINGS);
 }
 </script>
 
 </body>
 </html>
-
