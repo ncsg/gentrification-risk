@@ -23,13 +23,6 @@ html, body {
 	font-size: 22px;
 	font-weight: 400;
 }
-#cciLogo {
-	color: #863995;
-	opacity: 0.8;
-}
-#cciLogo:hover {
-	text-decoration: none;
-}
 #mapContainer {
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
@@ -42,10 +35,17 @@ html, body {
 #map {
 	width: 100%;
 	height: 100%;
-	margin: 0;
 	padding: 0;
+	margin: 0;
 }
 /* overrides default style for legends */
+#map .cartodb-legend-stack .cartodb-legend .legend-title {
+	font-family: 'Open Sans', sans-serif;
+	color: black;
+	font-size: 12px;
+	font-weight: bold;
+	text-transform: none;
+}
 #map .cartodb-legend-stack .cartodb-legend li {
 	font-family: 'Open Sans', sans-serif;
 	color: black;
@@ -68,7 +68,7 @@ html, body {
 #layerNav {
 	position: absolute;
 	top: 100px;
-	left: 70px;
+	left: 90px;
 	padding: 0px;
 	font-size: 12px;
 }
@@ -78,49 +78,44 @@ html, body {
 }
 </style>
 
-<!-- CartoDB (requires some resources, so easier to load from CDN -->
+<!-- load code libraries -->
+<script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
 <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
-
-<!-- JQuery, required for Bootstrap -->
 <script src="lib/jquery.min.js"></script>
-
-<!-- Bootstrap -->
 <link rel="stylesheet" href="lib/bootstrap.css">
 <script src="lib/bootstrap.js"></script>
-
-<!-- Google Fonts -->
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans:400,700'>
 
 </head>
 
 <body>
 	
 <div id="topBanner">
-	<a href='http://communityinnovation.berkeley.edu/'><img src='cci-logo.png' height='60'></a> &nbsp;&nbsp;&nbsp; CCI Regional Early Warning System for Displacement in the Bay Area</div>
+	<a href='http://communityinnovation.berkeley.edu/'><img src='cci-logo.png' height='60'></a> &nbsp;&nbsp;&nbsp; CCI Regional Early Warning System for Displacement</div>
 	
 <div id="mapContainer"></div>
 
 <div id ="layerNav">
 <div class="dropdown">
+<!-- this button style is from the Bootstrap library -->
   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
     Choose another data series...
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    <li><a onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/da4203d8-1899-11e5-b7fd-0e018d66dc29/viz.json'); return false;">
-	    CCI displacement typology</a></li>
-    <li><a onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/96051a6a-1cff-11e5-842f-0e9d821ea90d/viz.json'); return false;">
-	    Census tract population (2013)</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
-    <li><a href="#">Separated link</a></li>
+    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/a1a69ec6-1d26-11e5-b9e7-0e018d66dc29/viz.json'); return false;">
+	    CCI displacement typologies</a></li>
+    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/96051a6a-1cff-11e5-842f-0e9d821ea90d/viz.json'); return false;">
+	    Census tract population, 2013</a></li>
+    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/408fe5ce-1d27-11e5-ad42-0e853d047bba/viz.json'); return false;">
+	    Change in residential sale price, 2000-2013</a></li>
+    <li><a href="#">More to come...</a></li>
   </ul>
 </div>
 </div>
 
 <div id="textContent">Text content</div>
 
-<script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
 <script>
 
 // set the initial map options and url here
@@ -129,7 +124,7 @@ var INITIAL_MAP_SETTINGS = {
 	center_lon: -122.3,
 	zoom: 11
 }
-var INITIAL_VISJSON_URL = 'https://cci-displacement.cartodb.com/api/v2/viz/da4203d8-1899-11e5-b7fd-0e018d66dc29/viz.json';
+var INITIAL_VISJSON_URL = 'https://cci-displacement.cartodb.com/api/v2/viz/a1a69ec6-1d26-11e5-b9e7-0e018d66dc29/viz.json';
 var currentVis;
 
 function setUpMap(visjsonURL, mapSettings) {
