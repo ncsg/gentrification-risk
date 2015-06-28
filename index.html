@@ -21,7 +21,7 @@ html, body {
 	padding-left: 50px;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 22px;
-	font-weight: 400;
+	font-weight: 600;
 }
 #mapContainer {
 	border-top: 1px solid #ccc;
@@ -73,8 +73,25 @@ html, body {
 	font-size: 12px;
 }
 #textContent {
-	padding: 30px; 
-	padding-left: 50px;
+	width: 80%;
+	padding-top: 30px; 
+	margin-left: auto;
+	margin-right: auto;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+}
+.figure {
+	float: right;
+	margin: 20px;
+	margin-top: 0px;
+	margin-right: -50px;
+	padding: 0px;
+	width: 400px;
+	border: 1px solid #ccc;
+	border-right: 0px;
+}
+.notes {
+	font-size: 14px;
 }
 </style>
 
@@ -84,7 +101,7 @@ html, body {
 <script src="lib/jquery.min.js"></script>
 <link rel="stylesheet" href="lib/bootstrap.css">
 <script src="lib/bootstrap.js"></script>
-<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans:400,700'>
+<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700'>
 
 </head>
 
@@ -114,7 +131,30 @@ html, body {
 </div>
 </div>
 
-<div id="textContent">Text content</div>
+<div id="textContent">
+	
+<div><br><a href="http://communityinnovation.berkeley.edu/uploads/Table.png" target="_blank"><img class="figure" src="http://communityinnovation.berkeley.edu/uploads/Table.png"></a>
+The <a href="http://communityinnovation.berkeley.edu">Center for Community Innovation</a> (CCI) at UC Berkeley conducted regional data analysis to better understand the nature and drivers of gentrification and displacement, which was validated through 9 neighborhood case studies. From this analysis, and with careful review and input from an advisory committee, CCI developed 8 neighborhood typologies to help communities better characterize their experience and risks in an effort to raise awareness and stimulate action.
+</div>
+
+<div><br>Data and Documentation:</div>
+<div><ul><li><a href="http://iurd.berkeley.edu/uploads/CCI_Final_Report.pdf">Methodology and results of the Regional Early Warning System [PDF]</a></li>
+<li>Data downloads to come</li></ul>
+</div>
+
+<div>Additional Resources from CCI:</div>
+<div><ul>
+<li><a href="http://iurd.berkeley.edu/new-methodology-for-analyzing-displacement">Developing a New Methodology for Analyzing Potential Displacement</a></li>
+<li><a href="http://iurd.berkeley.edu/uploads/Displacement_Lit_Review_Final.pdf">Literature review on gentrification, displacement and the relationship to public and private investment [PDF]</a></li>
+<li><a href="http://communityinnovation.berkeley.edu/case-studies-on-gentrification-and-displacement-pressures-in-the-bay-area">Case studies on gentrification and displacement pressures in 9 neighborhoods in the Bay Area</a></li>
+</ul>
+</div>
+
+<div class="notes"><br>Notes:
+<br>Additional information about data sources in the map layers to come
+</div>
+
+<div><br><br></div>
 
 <script>
 
