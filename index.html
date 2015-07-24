@@ -141,23 +141,32 @@ html, body, #map {
     <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/2b46eec6-31c5-11e5-b5ff-0e0c41326911/viz.json">
     <a href="#">rsk_prewar [title to come]</a></li>
 
-    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/5fa529e4-31c5-11e5-ba97-0e4fddd5de28/viz.json'); return false;">rsk_burden [title to come]</a></li>
+    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/5fa529e4-31c5-11e5-ba97-0e4fddd5de28/viz.json">
+    <a href="#">rsk_burden [title to come]</a></li>
 
-    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/1f194bfc-31c6-11e5-904c-0e4fddd5de28/viz.json'); return false;">rsk_employ [title to come]</a></li>
+    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/1f194bfc-31c6-11e5-904c-0e4fddd5de28/viz.json">
+    <a href="#">rsk_employ [title to come]</a></li>
 
-    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/6cd76982-31c6-11e5-9b93-0e853d047bba/viz.json'); return false;">rsk_price [title to come]</a></li>
+    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/6cd76982-31c6-11e5-9b93-0e853d047bba/viz.json">
+    <a href="#">rsk_price [title to come]</a></li>
 
-    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/d966d7ea-31c6-11e5-a76b-0e0c41326911/viz.json'); return false;">rsk_rent [title to come]</a></li>
+    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/d966d7ea-31c6-11e5-a76b-0e0c41326911/viz.json">
+    <a href="#">rsk_rent [title to come]</a></li>
 
-    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/1d9cf94e-31c7-11e5-9940-0e0c41326911/viz.json'); return false;">rsk_units [title to come]</a></li>
+    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/1d9cf94e-31c7-11e5-9940-0e0c41326911/viz.json">
+    <a href="#">rsk_units [title to come]</a></li>
 
-    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/415bc130-31c7-11e5-9a19-0e018d66dc29/viz.json'); return false;">rsk_colge [title to come]</a></li>
+    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/415bc130-31c7-11e5-9a19-0e018d66dc29/viz.json">
+    <a href="#">rsk_colge [title to come]</a></li>
     
-    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/7b22760c-31c7-11e5-8946-0e4fddd5de28/viz.json'); return false;">dsp_lowinc [title to come]</a></li>
+    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/7b22760c-31c7-11e5-8946-0e4fddd5de28/viz.json">
+    <a href="#">dsp_lowinc [title to come]</a></li>
     
-    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/b35ae3ba-31c7-11e5-86fe-0e9d821ea90d/viz.json'); return false;">dsp_migrat [title to come]</a></li>
+    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/b35ae3ba-31c7-11e5-86fe-0e9d821ea90d/viz.json">
+    <a href="#">dsp_migrat [title to come]</a></li>
     
-    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/dff21f10-31c7-11e5-93e1-0e4fddd5de28/viz.json'); return false;">dsp_growth [title to come]</a></li>
+    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/dff21f10-31c7-11e5-93e1-0e4fddd5de28/viz.json">
+    <a href="#">dsp_growth [title to come]</a></li>
     
     <li><a href="#">More to come...</a></li>
   </ul>
@@ -219,26 +228,29 @@ var INITIAL_MAP_SETTINGS = {
 	center_lon: -122.3,
 	zoom: 11
 }
-var INITIAL_VISJSON_URL = 'https://cci-displacement.cartodb.com/api/v2/viz/e78166c2-3222-11e5-a648-0e0c41326911/viz.json';
+var INITIAL_VISJSON_URL = $('#layer-selector .active').data('url');
 
-var currentVis;
-var sublayer;
+// state variables
+var activeVis;
 var baseQuery; // default for layer
-var currentQuery; // county selection if any
+var activeQuery; // county selection if any
+
+function getVisLayer() {
+	// this returns the CartoDB visualization layer
+	var layers = activeVis.getLayers();
+	return layers[1].getSubLayer(0);
+}
 
 function setUpMap(visjsonURL, mapSettings) {
 	$("#mapContainer").append("<div id='map'></div>");
 	cartodb.createVis('map', visjsonURL, mapSettings)
 		.done(function(vis, layers) {
-			currentVis = vis;
-			sublayer = layers[1].getSubLayer(0);
-			baseQuery = sublayer.getSQL();
-			// apply county selection
-			if (currentQuery) selectCounty(currentQuery);
-
-			// set custom text for search box
+			activeVis = vis;
+			// save default sql query and apply county selection if needed
+			baseQuery = getVisLayer().getSQL();
+			if (activeQuery) getVisLayer().setSQL(activeQuery);
+			// set custom text for search box, and remove when user clicks
 			$("#map .cartodb-searchbox .text").val("Go to place");
-			// remove when user clicks on it
 			$("#map .cartodb-searchbox .text").click(function() {
 				$("#map .cartodb-searchbox .text").val("");
 			});
@@ -247,14 +259,14 @@ function setUpMap(visjsonURL, mapSettings) {
 
 $('#layer-selector li').click(function() {
 	var url = $(this).data('url');
-	var lmap = currentVis.getNativeMap();
-	var currentMapSettings = {
+	var lmap = activeVis.getNativeMap();
+	var activeMapSettings = {
 		center_lat: lmap.getCenter().lat,
 		center_lon: lmap.getCenter().lng,
 		zoom: lmap.getZoom()
 	}
-	currentVis.remove();
-	setUpMap(url, currentMapSettings);
+	activeVis.remove();
+	setUpMap(url, activeMapSettings);
 	resetMenu($(this));
 });
 
@@ -262,14 +274,16 @@ $('#county-selector li').click(function() {
 	var selection = $(this).text();
 	var query = baseQuery + " WHERE _county = '" + selection + "'";
 	if (selection == 'SHOW ALL') query = baseQuery;
-	selectCounty(query);
-	currentQuery = query; // save in case layer is changed
+	// zoom to extent of selected county
+	var sql = new cartodb.SQL({user: 'cci-displacement'});
+	sql.getBounds(query).done(function(bounds) {
+        activeVis.getNativeMap().fitBounds(bounds);
+    });
+    // apply the query and save it in case the layer is changed
+	getVisLayer().setSQL(query);
+	activeQuery = query;
 	resetMenu($(this));
 });
-
-function selectCounty(query) {
-	sublayer.setSQL(query);
-}
 
 function resetMenu(obj) {
 	// reset selection in a pulldown menu
