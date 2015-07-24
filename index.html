@@ -65,6 +65,12 @@ html, body {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 11px;
 }
+/* add scrolling to bootstrap menu */
+.scrollable-menu {
+    height: auto;
+    max-height: 350px;
+    overflow-x: hidden;
+}
 #layerNav {
 	position: absolute;
 	top: 100px;
@@ -119,13 +125,32 @@ html, body {
     Choose another data series...
     <span class="caret"></span>
   </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/a1a69ec6-1d26-11e5-b9e7-0e018d66dc29/viz.json'); return false;">
-	    CCI displacement typologies</a></li>
-    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/96051a6a-1cff-11e5-842f-0e9d821ea90d/viz.json'); return false;">
-	    Census tract population, 2013</a></li>
-    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/408fe5ce-1d27-11e5-ad42-0e853d047bba/viz.json'); return false;">
-	    Change in residential sale price, 2000-2013</a></li>
+  <ul class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenu1">
+	  
+    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/649dc7ae-31c9-11e5-9867-0e018d66dc29/viz.json'); return false;">CCI displacement typologies</a></li>
+    
+    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/3949b4a2-31a4-11e5-aeae-0e9d821ea90d/viz.json'); return false;">rsk_pop [title to come]</a></li>
+    
+    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/2b46eec6-31c5-11e5-b5ff-0e0c41326911/viz.json'); return false;">rsk_prewar [title to come]</a></li>
+
+    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/5fa529e4-31c5-11e5-ba97-0e4fddd5de28/viz.json'); return false;">rsk_burden [title to come]</a></li>
+
+    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/1f194bfc-31c6-11e5-904c-0e4fddd5de28/viz.json'); return false;">rsk_employ [title to come]</a></li>
+
+    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/6cd76982-31c6-11e5-9b93-0e853d047bba/viz.json'); return false;">rsk_price [title to come]</a></li>
+
+    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/d966d7ea-31c6-11e5-a76b-0e0c41326911/viz.json'); return false;">rsk_rent [title to come]</a></li>
+
+    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/1d9cf94e-31c7-11e5-9940-0e0c41326911/viz.json'); return false;">rsk_units [title to come]</a></li>
+
+    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/415bc130-31c7-11e5-9a19-0e018d66dc29/viz.json'); return false;">rsk_colge [title to come]</a></li>
+    
+    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/7b22760c-31c7-11e5-8946-0e4fddd5de28/viz.json'); return false;">dsp_lowinc [title to come]</a></li>
+    
+    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/b35ae3ba-31c7-11e5-86fe-0e9d821ea90d/viz.json'); return false;">dsp_migrat [title to come]</a></li>
+    
+    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/dff21f10-31c7-11e5-93e1-0e4fddd5de28/viz.json'); return false;">dsp_growth [title to come]</a></li>
+    
     <li><a href="#">More to come...</a></li>
   </ul>
 </div>
@@ -164,7 +189,7 @@ var INITIAL_MAP_SETTINGS = {
 	center_lon: -122.3,
 	zoom: 11
 }
-var INITIAL_VISJSON_URL = 'https://cci-displacement.cartodb.com/api/v2/viz/a1a69ec6-1d26-11e5-b9e7-0e018d66dc29/viz.json';
+var INITIAL_VISJSON_URL = 'https://cci-displacement.cartodb.com/api/v2/viz/649dc7ae-31c9-11e5-9867-0e018d66dc29/viz.json';
 var currentVis;
 
 function setUpMap(visjsonURL, mapSettings) {
@@ -172,6 +197,12 @@ function setUpMap(visjsonURL, mapSettings) {
 	cartodb.createVis('map', visjsonURL, mapSettings)
 		.done(function(vis, layers) {
 			currentVis = vis;
+			// set custom text for search box
+			$("#map .cartodb-searchbox .text").val("Go to place");
+			// remove when user clicks on it
+			$("#map .cartodb-searchbox .text").click(function() {
+				$("#map .cartodb-searchbox .text").val("");
+			});
 		});
 }
 
@@ -188,6 +219,7 @@ function swapMap(visjsonURL) {
 window.onload = function() {
 	setUpMap(INITIAL_VISJSON_URL, INITIAL_MAP_SETTINGS);
 }
+
 </script>
 
 </body>
