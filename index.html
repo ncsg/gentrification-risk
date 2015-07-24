@@ -8,7 +8,7 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 
 <style>
-html, body {
+html, body, #map {
 	width: 100%;
 	height: 100%;
 	padding: 0;
@@ -31,12 +31,6 @@ html, body {
 	width: 100%;
 	height: 450px;
 	padding: 0;
-}
-#map {
-	width: 100%;
-	height: 100%;
-	padding: 0;
-	margin: 0;
 }
 /* overrides default style for legends */
 #map .cartodb-legend-stack .cartodb-legend .legend-title {
@@ -138,11 +132,14 @@ html, body {
   </button>
   <ul class="dropdown-menu scrollable-menu" id="layer-selector" aria-labelledby="dropdownMenu1">
 	  
-    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/e78166c2-3222-11e5-a648-0e0c41326911/viz.json'); return false;">CCI displacement typologies</a></li>
+    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/e78166c2-3222-11e5-a648-0e0c41326911/viz.json" class="active">
+    <a href="#">CCI displacement typologies</a></li>
     
-    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/3949b4a2-31a4-11e5-aeae-0e9d821ea90d/viz.json'); return false;">rsk_pop [title to come]</a></li>
+    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/3949b4a2-31a4-11e5-aeae-0e9d821ea90d/viz.json">
+    <a href="#">rsk_pop [title to come]</a></li>
     
-    <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/2b46eec6-31c5-11e5-b5ff-0e0c41326911/viz.json'); return false;">rsk_prewar [title to come]</a></li>
+    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/2b46eec6-31c5-11e5-b5ff-0e0c41326911/viz.json">
+    <a href="#">rsk_prewar [title to come]</a></li>
 
     <li><a href="#" onclick="swapMap('https://cci-displacement.cartodb.com/api/v2/viz/5fa529e4-31c5-11e5-ba97-0e4fddd5de28/viz.json'); return false;">rsk_burden [title to come]</a></li>
 
@@ -175,7 +172,7 @@ html, body {
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu scrollable-menu" id="county-selector" aria-labelledby="dropdownMenu2">
-    <li><a href="#">SHOW ALL</a></li>   
+    <li class="active"><a href="#">SHOW ALL</a></li>   
     <li><a href="#">Alameda</a></li>
     <li><a href="#">Contra Costa</a></li>
     <li><a href="#">Marin</a></li>
@@ -223,9 +220,11 @@ var INITIAL_MAP_SETTINGS = {
 	zoom: 11
 }
 var INITIAL_VISJSON_URL = 'https://cci-displacement.cartodb.com/api/v2/viz/e78166c2-3222-11e5-a648-0e0c41326911/viz.json';
+
 var currentVis;
 var sublayer;
-var baseQuery;
+var baseQuery; // default for layer
+var currentQuery; // county selection if any
 
 function setUpMap(visjsonURL, mapSettings) {
 	$("#mapContainer").append("<div id='map'></div>");
@@ -234,36 +233,49 @@ function setUpMap(visjsonURL, mapSettings) {
 			currentVis = vis;
 			sublayer = layers[1].getSubLayer(0);
 			baseQuery = sublayer.getSQL();
-			
+			// apply county selection
+			if (currentQuery) selectCounty(currentQuery);
+
 			// set custom text for search box
 			$("#map .cartodb-searchbox .text").val("Go to place");
 			// remove when user clicks on it
 			$("#map .cartodb-searchbox .text").click(function() {
 				$("#map .cartodb-searchbox .text").val("");
 			});
-			
-			//sublayer.setSQL(sublayer.getSQL() + " WHERE _county = 'Alameda'");
 		});
 }
 
-function swapMap(visjsonURL) {
+$('#layer-selector li').click(function() {
+	var url = $(this).data('url');
+	var lmap = currentVis.getNativeMap();
 	var currentMapSettings = {
-		center_lat: currentVis.getNativeMap().getCenter().lat,
-		center_lon: currentVis.getNativeMap().getCenter().lng,
-		zoom: currentVis.getNativeMap().getZoom()
+		center_lat: lmap.getCenter().lat,
+		center_lon: lmap.getCenter().lng,
+		zoom: lmap.getZoom()
 	}
 	currentVis.remove();
-	setUpMap(visjsonURL, currentMapSettings);
+	setUpMap(url, currentMapSettings);
+	resetMenu($(this));
+});
+
+$('#county-selector li').click(function() {
+	var selection = $(this).text();
+	var query = baseQuery + " WHERE _county = '" + selection + "'";
+	if (selection == 'SHOW ALL') query = baseQuery;
+	selectCounty(query);
+	currentQuery = query; // save in case layer is changed
+	resetMenu($(this));
+});
+
+function selectCounty(query) {
+	sublayer.setSQL(query);
 }
 
-$('#county-selector li').click(function(e) {
-	var selection = $(e.target).text();
-	var query = baseQuery + " WHERE _county = '" + selection + "'";
-	if (selection == 'SHOW ALL') {
-		query = baseQuery;
-	}
-	sublayer.setSQL(query);
-});
+function resetMenu(obj) {
+	// reset selection in a pulldown menu
+	obj.parent().find('.active').removeClass('active');
+	obj.addClass('active');
+}
 
 window.onload = function() {
 	setUpMap(INITIAL_VISJSON_URL, INITIAL_MAP_SETTINGS);
