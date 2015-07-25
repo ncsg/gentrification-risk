@@ -250,9 +250,11 @@ function setUpMap(visjsonURL, mapSettings) {
 			baseQuery = getVisLayer().getSQL();
 			if (activeQuery) getVisLayer().setSQL(activeQuery);
 			// set custom text for search box, and remove when user clicks
-			$("#map .cartodb-searchbox .text").val("Go to place");
-			$("#map .cartodb-searchbox .text").click(function() {
-				$("#map .cartodb-searchbox .text").val("");
+			var textBox = $("#map .cartodb-searchbox .text");
+			var defaultTxt = 'Go to place';
+			textBox.val(defaultTxt);
+			textBox.click(function() { 
+				if ($(this).val() == defaultTxt) $(this).val(''); 
 			});
 		});
 }
