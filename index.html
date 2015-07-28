@@ -434,12 +434,14 @@ var INITIAL_MAP_SETTINGS = {
 var INITIAL_VISJSON_URL = $('#layer-selector .active').data('url');
 
 // state variables
-var activeVis;
-var baseQuery; // default for layer
-var activeQuery; // county selection if any
+var activeVis = null;
+var baseQuery = null; // default for layer
+var activeQuery = null; // geo selection if any
+var activeCityName = null;
+var activeCityOutline = null;
 
 function getVisLayer() {
-	// this returns the CartoDB visualization layer
+	// returns the CartoDB visualization layer
 	var layers = activeVis.getLayers();
 	return layers[1].getSubLayer(0);
 }
@@ -451,7 +453,9 @@ function setUpMap(visjsonURL, mapSettings) {
 			activeVis = vis;
 			// save default sql query and apply county selection if needed
 			baseQuery = getVisLayer().getSQL();
+			// replicate prior geo selection
 			if (activeQuery) getVisLayer().setSQL(activeQuery);
+			if (activeCityName) addCityOutline(activeCityName);
 			// set custom text for search box, and remove when user clicks
 			var textBox = $("#map .cartodb-searchbox .text");
 			var defaultTxt = 'Go to place';
@@ -476,6 +480,7 @@ $('#layer-selector li').click(function() {
 });
 
 $('#geo-selector li').click(function() {
+	clearCityOutline();
 	var geo = $(this).data('geo'); // 'city' or 'county' or 'all'
 	var selection = $(this).text(); // name of drop-down item
 	var query = baseQuery;
@@ -483,21 +488,43 @@ $('#geo-selector li').click(function() {
 		var value = $(this).data('value');
 		query += " WHERE _county = '" + value + "'";
 	}
-	if (geo == 'city') {
-		// need to change query prefix because some layers aren't using the 
-		// version of the data table including cities yet
-		query = "SELECT * FROM cci_data_v04 WHERE _city = '" + selection + "'";
+	// San Fran county data includes Farallon Islands; map looks better if we select city instead
+	if (selection == 'San Francisco County') {
+		query = "SELECT * FROM cci_data_v04 WHERE _city = 'San Francisco'";
 	}
-	// zoom to extent of selected geography
+	if (geo == 'city') {
+		query = "SELECT * FROM cci_data_v04 WHERE _city = '" + selection + "'";
+		addCityOutline(selection);
+	}
+	if (geo != 'all') 
+		zoomToExtent(query);
+		
+    // apply the query and save it in case the layer is changed
+    getVisLayer().setSQL(query);
+	activeQuery = query;
+	resetMenu($(this));
+});
+
+function zoomToExtent(query) {
 	var sql = new cartodb.SQL({user: 'cci-displacement'});
 	sql.getBounds(query).done(function(bounds) {
         activeVis.getNativeMap().fitBounds(bounds);
     });
-    // apply the query and save it in case the layer is changed
-	getVisLayer().setSQL(query);
-	activeQuery = query;
-	resetMenu($(this));
-});
+}
+
+function addCityOutline(name) {
+	activeCityName = name;
+	activeCityOutline = activeVis.getLayers()[1].createSubLayer({
+		sql: "SELECT * FROM bay_area_places_clean WHERE name = '" + name + "'",
+		cartocss: '#bay_area_places_clean { line-color: #000; line-width: 1.5;}'
+	});
+}
+
+function clearCityOutline() {
+	if (activeCityOutline) activeCityOutline.remove();
+	activeCityName = null;
+	activeCityOutline = null;
+}
 
 function resetMenu(obj) {
 	// reset selection in a pulldown menu
