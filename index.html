@@ -4,10 +4,11 @@
 <head>
 <title>CCI Regional Early Warning System for Displacement</title>
 
-<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 
 <style>
+	
 html, body, #map {
 	width: 100%;
 	height: 100%;
@@ -16,12 +17,20 @@ html, body, #map {
 	font-family: 'Open Sans', sans-serif;
 }
 #topBanner {
+	height: 80px;
 	background-color: #fff;
+	margin: 0;
 	padding: 10px;
 	padding-left: 50px;
+	padding-top: 25px;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 22px;
 	font-weight: 600;
+}
+#topBanner img {
+	float: left;
+	margin-top: -14px;
+	padding-right: 15px;
 }
 #mapContainer {
 	border-top: 1px solid #ccc;
@@ -109,6 +118,39 @@ html, body, #map {
 .notes {
 	font-size: 14px;
 }
+
+@media only screen 
+and (max-width: 480px) {
+	
+	.mobile-hide {
+		display: none;
+	}
+	#topBanner {
+		padding-left: 20px;
+		padding-top: 5px;
+		font-size: 16px;
+		font-weight: bold;
+	}
+	#topBanner img {
+		margin-top: 0;
+	}
+	#mapContainer {
+		height: 320px;
+		margin-bottom: 55px;
+	}
+	div .cartodb-legend-stack {
+		visibility: hidden;
+	}
+	#layerSelectionContainer {
+		left: 20px;
+		top: 410px;
+	}
+	#geoSelectionContainer {
+		left: 20px;
+		top: 450px;
+	}
+}
+
 </style>
 
 <!-- load code libraries -->
@@ -124,7 +166,7 @@ html, body, #map {
 <body>
 	
 <div id="topBanner">
-	<a href='http://communityinnovation.berkeley.edu/'><img src='cci-logo.png' height='60'></a> &nbsp;&nbsp;&nbsp; CCI Regional Early Warning System for Displacement</div>
+	<a href='http://communityinnovation.berkeley.edu/'><img src='cci-logo.png' height='60'></a> CCI Regional Early Warning System for Displacement</div>
 	
 <div id="mapContainer"></div>
 
@@ -400,7 +442,7 @@ html, body, #map {
 
 <div id="textContent">
 	
-<div><br><a href="http://communityinnovation.berkeley.edu/uploads/Table.png" target="_blank"><img class="figure" src="http://communityinnovation.berkeley.edu/uploads/Table.png"></a>
+<div><br><a href="http://communityinnovation.berkeley.edu/uploads/Table.png" target="_blank"><img class="figure mobile-hide" src="http://communityinnovation.berkeley.edu/uploads/Table.png"></a>
 The <a href="http://communityinnovation.berkeley.edu">Center for Community Innovation</a> (CCI) at UC Berkeley conducted regional data analysis to better understand the nature and drivers of gentrification and displacement, which was validated through 9 neighborhood case studies. From this analysis, and with careful review and input from an advisory committee, CCI developed 8 neighborhood typologies to help communities better characterize their experience and risks in an effort to raise awareness and stimulate action.
 </div>
 
