@@ -142,6 +142,9 @@ html, body, #map {
     
     <li role="separator" class="divider"></li>
 
+    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/298a157c-3585-11e5-adac-0e018d66dc29/viz.json">
+    <a href="#">Basemap only</a></li>
+    
     <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/3949b4a2-31a4-11e5-aeae-0e9d821ea90d/viz.json">
     <a href="#">Population (2013)</a></li>
     
@@ -163,9 +166,6 @@ html, body, #map {
     <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/1d9cf94e-31c7-11e5-9940-0e0c41326911/viz.json">
     <a href="#">New market-rate units (#, 2000-2013)</a></li>
 
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/415bc130-31c7-11e5-9a19-0e018d66dc29/viz.json">
-    <a href="#">Residents in college (%, 2013)</a></li>
-    
     <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/7b22760c-31c7-11e5-8946-0e4fddd5de28/viz.json">
     <a href="#">Change in low-income households (#, 2000-2013)</a></li>
     
@@ -490,10 +490,10 @@ $('#geo-selector li').click(function() {
 	}
 	// San Fran county data includes Farallon Islands; map looks better if we select city instead
 	if (selection == 'San Francisco County') {
-		query = "SELECT * FROM cci_data_v04 WHERE _city = 'San Francisco'";
+		query = baseQuery + " WHERE _city = 'San Francisco'";
 	}
 	if (geo == 'city') {
-		query = "SELECT * FROM cci_data_v04 WHERE _city = '" + selection + "'";
+		query += " WHERE _city = '" + selection + "'";
 		addCityOutline(selection);
 	}
 	if (geo != 'all') 
@@ -515,8 +515,8 @@ function zoomToExtent(query) {
 function addCityOutline(name) {
 	activeCityName = name;
 	activeCityOutline = activeVis.getLayers()[1].createSubLayer({
-		sql: "SELECT * FROM bay_area_places_clean WHERE name = '" + name + "'",
-		cartocss: '#bay_area_places_clean { line-color: #000; line-width: 1.5;}'
+		sql: "SELECT * FROM bay_area_places_clean_v2 WHERE name = '" + name + "'",
+		cartocss: '#bay_area_places_clean_v2 { line-color: #000; line-width: 1.5;}'
 	});
 }
 
