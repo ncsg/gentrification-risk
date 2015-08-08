@@ -61,6 +61,21 @@ html, body, #map {
 	height: 10px;
 	width: 10px;
 }
+#map div.cartodb-legend-stack div.cartodb-legend li.min {
+	float: left;
+	width: 20%;
+	text-align: center;
+}
+#map div.cartodb-legend-stack div.cartodb-legend li.median {
+	float: left;
+	width: 60%;
+	text-align: center;
+}
+#map div.cartodb-legend-stack div.cartodb-legend li.max {
+	float: right;
+	width: 20%;
+	text-align: center;
+}
 
 /* overrides default style for tooltips */
 #map .cartodb-tooltip-content {
@@ -120,7 +135,7 @@ html, body, #map {
 }
 
 @media only screen 
-and (max-width: 480px) {
+and (max-width: 380px) {
 	
 	.mobile-hide {
 		display: none;
@@ -447,8 +462,8 @@ The <a href="http://communityinnovation.berkeley.edu">Center for Community Innov
 </div>
 
 <div><br>Data and Documentation:</div>
-<div><ul><li><a href="http://iurd.berkeley.edu/uploads/CCI_Final_Report.pdf">Methodology & results of the Regional Early Warning System</a> [PDF]</li>
-<li><a href="#">Download all data series from map</a> [XLS]</li></ul>
+<div><ul><li><a href="http://iurd.berkeley.edu/uploads/CCI_Final_Report_07_23_15.pdf">Methodology & results of the Regional Early Warning System</a> [PDF]</li>
+<li><a href="http://communityinnovation.berkeley.edu/uploads/CCI_REWS_data_2015-08-05.xlsx">Download all data series from map</a> [XLS]</li></ul>
 </div>
 
 <div>Additional Resources from CCI:</div>
@@ -469,6 +484,7 @@ The <a href="http://communityinnovation.berkeley.edu">Center for Community Innov
 
 // set the initial map options and url here
 var INITIAL_MAP_SETTINGS = {
+	detectRetina: true,
 	center_lat: 37.8,
 	center_lon: -122.3,
 	zoom: 11
@@ -512,6 +528,7 @@ $('#layer-selector li').click(function() {
 	var url = $(this).data('url');
 	var lmap = activeVis.getNativeMap();
 	var activeMapSettings = {
+		detectRetina: true,
 		center_lat: lmap.getCenter().lat,
 		center_lon: lmap.getCenter().lng,
 		zoom: lmap.getZoom()
