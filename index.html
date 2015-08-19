@@ -2,7 +2,7 @@
        "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>CCI Regional Early Warning System for Displacement</title>
+<title>UCB Urban Displacement Project Maps</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
@@ -120,6 +120,28 @@ html, body, #map {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 16px;
 }
+#textContent h3 {
+	font-size: 20px;
+	font-weight: 600;
+	margin-bottom: 18px;
+}
+#textContent h4 {
+	font-size: 16px;
+	font-weight: 600;
+	margin-bottom: 12px;
+}
+#textContent li {
+	margin-top: 6px;
+}
+#textContent .smaller {
+	font-size: 14px;
+}
+#textContent .larger {
+	font-size: 18px;
+}
+#textContent .larger li {
+	margin-top: 12px;
+}
 .figure {
 	float: right;
 	margin: 20px;
@@ -129,9 +151,6 @@ html, body, #map {
 	width: 400px;
 	border: 1px solid #ccc;
 	border-right: 0px;
-}
-.notes {
-	font-size: 14px;
 }
 
 @media only screen 
@@ -181,7 +200,7 @@ and (max-width: 380px) {
 <body>
 	
 <div id="topBanner">
-	<a href='http://communityinnovation.berkeley.edu/'><img src='cci-logo.png' height='60'></a> CCI Regional Early Warning System for Displacement</div>
+	<a href='http://communityinnovation.berkeley.edu/'><img src='cci-logo.png' height='60'></a> UCB Urban Displacement Project Maps</div>
 	
 <div id="mapContainer"></div>
 
@@ -195,7 +214,7 @@ and (max-width: 380px) {
   <ul class="dropdown-menu scrollable-menu" id="layer-selector" aria-labelledby="dropdownMenuDivider">
 	  
     <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/e78166c2-3222-11e5-a648-0e0c41326911/viz.json" class="active">
-    <a href="#">CCI displacement typologies</a></li>
+    <a href="#">Displacement typologies</a></li>
     
     <li role="separator" class="divider"></li>
 
@@ -457,25 +476,41 @@ and (max-width: 380px) {
 
 <div id="textContent">
 	
-<div><br><a href="http://communityinnovation.berkeley.edu/uploads/Table.png" target="_blank"><img class="figure mobile-hide" src="http://communityinnovation.berkeley.edu/uploads/Table.png"></a>
-The <a href="http://communityinnovation.berkeley.edu">Center for Community Innovation</a> (CCI) at UC Berkeley conducted regional data analysis to better understand the nature and drivers of gentrification and displacement, which was validated through 9 neighborhood case studies. From this analysis, and with careful review and input from an advisory committee, CCI developed 8 neighborhood typologies to help communities better characterize their experience and risks in an effort to raise awareness and stimulate action.
+<div><h3>Mapping Displacement and Gentrification in the San Francisco Bay Area</h3></div>
+
+<div><a href="http://communityinnovation.berkeley.edu/uploads/Table.png" target="_blank"><img class="figure mobile-hide" src="http://communityinnovation.berkeley.edu/uploads/Table.png"></a>
+
+The Bay Area’s booming jobs and housing market necessitates a careful look at the causes and consequences of neighborhood change to protect residents that are most vulnerable to potentially being displaced. Wages for the Bay Area’s low income residents have not kept pace with the sky-rocketing housing prices resulting in massive demographic shifts in the area.
+
+<br><br>
+UC Berkeley analyzed regional data on housing, income and other demographics to better understand and predict where gentrification and displacement is happening and will likely occur in the future. This analysis, which is summarized in the interactive maps, will allow communities to better characterize their experience and risk of displacement and to stimulate action. The analysis behind these maps was validated through in-depth case studies of 9 Bay Area communities and with the support and advice of the <a href="http://planbayarea.org/regional-initiatives/Bay-Area-Prosperity-Plan.html">Regional Prosperity Plan</a> at the <a href="http://www.mtc.ca.gov/">Metropolitan Transportation Commission</a>. In developing 8 neighborhood displacement typologies, communities can better understand where they’re at and develop actions to prevent from advancing in the stages of gentrification and displacement.
 </div>
 
-<div><br>Data and Documentation:</div>
-<div><ul><li><a href="http://iurd.berkeley.edu/uploads/CCI_Final_Report_07_23_15.pdf">Methodology & results of the Regional Early Warning System</a> [PDF]</li>
+<div class="larger">
+<br><h3>Key Findings</h3>
+<ul>
+<li>In 2013, 48 percent of census tracts and more than 53 percent of low-income households lived in neighborhoods at risk of or already experiencing displacement and gentrification pressures.<br></li>
+<li>Neighborhoods with rail stations, historic housing stock, an abundance of market rate developments and rising housing prices are especially at risk of losing low-income households.<br></li>
+<li>Low income neighborhoods are not the only ones experiencing displacement pressures &ndash; many higher income neighborhoods that still house low income households are also rapidly losing low income population.<br></li>
+<li>The number of tracts at risk of displacement are 125% higher than the numbers already experiencing them, indicating that the transformation of the Bay Area will continue to accelerate.<br></li>
+</ul></div>
+
+<div><br><h3>Data and Documentation</h3>
+<ul><li><a href="http://iurd.berkeley.edu/uploads/CCI_Final_Report_07_23_15.pdf">Methodology & results of the Regional Early Warning System</a> [PDF]</li>
 <li><a href="http://communityinnovation.berkeley.edu/uploads/CCI_REWS_data_2015-08-05.xlsx">Download all data series from map</a> [XLS]</li></ul>
 </div>
 
-<div>Additional Resources from CCI:</div>
-<div><ul>
+<div><br><h3>Additional Resources from UCB Urban Displacement Project</h3>
+<ul>
 <li><a href="http://iurd.berkeley.edu/new-methodology-for-analyzing-displacement">Developing a New Methodology for Analyzing Potential Displacement</a></li>
 <li><a href="http://iurd.berkeley.edu/uploads/Displacement_Lit_Review_Final.pdf">Literature review on gentrification, displacement and the relationship to public and private investment</a> [PDF]</li>
 <li><a href="http://communityinnovation.berkeley.edu/case-studies-on-gentrification-and-displacement-pressures-in-the-bay-area">Case studies on gentrification and displacement pressures in 9 neighborhoods in the Bay Area</a></li>
 </ul>
 </div>
 
-<div class="notes"><br>Notes:
-<br><ul><li>Data sources include the U.S. Census, American Community Survey (ACS), California Housing Partnership Corporation (CHPC), National Establishment Time-Series (NETS), and DataQuick. Please see our downloadable data table above for more details. 
+<div class="smaller">
+<br><h4>Notes</h4>
+<ul><li>Data sources include the U.S. Census, American Community Survey (ACS), California Housing Partnership Corporation (CHPC), National Establishment Time-Series (NETS), and DataQuick. Please see our downloadable data table above for more details. 
 </li></ul></div>
 
 <div><br><br></div>
