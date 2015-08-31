@@ -474,6 +474,10 @@ and (max-width: 380px) {
 </div>
 </div>
 
+<div class="expand-map">
+	<a onclick="expandMap();" class="btn btn-primary">
+		Larger <span class="glyphicon glyphicon-chevron-down"></span> Map</a></div>
+
 <div id="textContent">
 	
 <div><h3>Mapping Displacement and Gentrification in the San Francisco Bay Area</h3></div>
@@ -624,6 +628,19 @@ function resetMenu(obj) {
 	// reset selection in a pulldown menu
 	obj.parent().find('.active').removeClass('active');
 	obj.addClass('active');
+}
+
+function expandMap() {
+	$(window).scrollTop($("#mapContainer").position().top - 15);
+	var h = $(window).height() - 75;
+	$("#mapContainer").height(h);
+	$(".expand-map").html('<a onclick="contractMap();" class="btn btn-primary">Smaller <span class="glyphicon glyphicon-chevron-up"></span> Map');
+}
+
+function contractMap() {
+	$(window).scrollTop(0);
+	$("#mapContainer").height(450);
+	$(".expand-map").html('<a onclick="expandMap();" class="btn btn-primary">Larger <span class="glyphicon glyphicon-chevron-down"></span> Map');
 }
 
 window.onload = function() {
