@@ -2,7 +2,7 @@
        "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>UCB Urban Displacement Project Maps</title>
+<title>NCSG Gentrification Risk Maps</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
@@ -38,7 +38,7 @@ html, body, #map {
 	margin-left: 0;
 	margin-right: 0;
 	width: 100%;
-	height: 450px;
+	height: 570px;
 	padding: 0;
 }
 
@@ -200,7 +200,7 @@ and (max-width: 380px) {
 <body>
 	
 <div id="topBanner">
-	<a href='http://communityinnovation.berkeley.edu/'><img src='cci-logo.png' height='60'></a> UCB Urban Displacement Project Maps</div>
+	<a href='ncsg.github.io/plcc-dashboard'><img src='ncsg_knocked.jpg' height='60'></a> NCSG Gentrification Risk Maps</div>
 	
 <div id="mapContainer"></div>
 
@@ -213,7 +213,7 @@ and (max-width: 380px) {
   </button>
   <ul class="dropdown-menu scrollable-menu" id="layer-selector" aria-labelledby="dropdownMenuDivider">
 	  
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/e78166c2-3222-11e5-a648-0e0c41326911/viz.json" class="active">
+    <li data-url="https://nfinio.cartodb.com/api/v2/viz/012897fc-e6d8-11e5-83e5-0e674067d321/viz.json" class="active">
     <a href="#">Displacement typologies</a></li>
     
     <li role="separator" class="divider"></li>
@@ -227,116 +227,6 @@ and (max-width: 380px) {
     <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/2b46eec6-31c5-11e5-b5ff-0e0c41326911/viz.json">
     <a href="#">Housing units in pre-1950 buildings (%, 2013)</a></li>
 
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/5fa529e4-31c5-11e5-ba97-0e4fddd5de28/viz.json">
-    <a href="#">Change in LI households w/ low rent burden (#, 2000-2013)</a></li>
-
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/1f194bfc-31c6-11e5-904c-0e4fddd5de28/viz.json">
-    <a href="#">Employment density: jobs per square mile (2011)</a></li>
-
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/6cd76982-31c6-11e5-9b93-0e853d047bba/viz.json">
-    <a href="#">Change in median home sale price (%, 2000-2013)</a></li>
-
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/d966d7ea-31c6-11e5-a76b-0e0c41326911/viz.json">
-    <a href="#">Change in rent (%, 2000-2013)</a></li>
-
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/1d9cf94e-31c7-11e5-9940-0e0c41326911/viz.json">
-    <a href="#">New market-rate units (#, 2000-2013)</a></li>
-
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/7b22760c-31c7-11e5-8946-0e4fddd5de28/viz.json">
-    <a href="#">Change in low-income households (#, 2000-2013)</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/b35ae3ba-31c7-11e5-86fe-0e9d821ea90d/viz.json">
-    <a href="#">Change in % low-income in-migration (2009-2013)</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/dff21f10-31c7-11e5-93e1-0e4fddd5de28/viz.json">
-    <a href="#">Population growth (%, 2000-2013)</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/23b35814-3596-11e5-8339-0e9d821ea90d/viz.json">
-    <a href="#">Low-income households (%, 1990)</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/b84a87a4-3596-11e5-8787-0e853d047bba/viz.json">
-    <a href="#">Low-income households (%, 2000)</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/dbc86c1e-3596-11e5-a30c-0e4fddd5de28/viz.json">
-    <a href="#">Low-income households (%, 2013)</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/f582fb24-3596-11e5-b01c-0e853d047bba/viz.json">
-    <a href="#">Adults (25+) with college degree (%, 1990)</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/1c78891a-3597-11e5-8f88-0e9d821ea90d/viz.json">
-    <a href="#">Adults (25+) with college degree (%, 2000)</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/49de57cc-3597-11e5-8339-0e9d821ea90d/viz.json">
-    <a href="#">Adults (25+) with college degree (%, 2013)</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/71dc8adc-3597-11e5-add1-0e4fddd5de28/viz.json">
-    <a href="#">Renter households (%, 1990)</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/aa69d72e-3597-11e5-a122-0e853d047bba/viz.json">
-    <a href="#">Renter households (%, 2000)</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/c4cc9962-3597-11e5-8f88-0e9d821ea90d/viz.json">
-    <a href="#">Renter households (%, 2013)</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/ee8cbdfe-3597-11e5-9ae6-0e018d66dc29/viz.json">
-    <a href="#">Non-white population (%, 1990)</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/07284b80-3598-11e5-8dd3-0e018d66dc29/viz.json">
-    <a href="#">Non-white population (%, 2000)</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/2d3006d8-3598-11e5-87fb-0e0c41326911/viz.json">
-    <a href="#">Non-white population (%, 2013)</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/4a2c93a0-3598-11e5-add1-0e4fddd5de28/viz.json">
-    <a href="#">Change in college-educated adult population (%, 1990-2000)</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/7342885c-3599-11e5-9ae6-0e018d66dc29/viz.json">
-    <a href="#">Change in college-educated adult population (%, 2000-2013)</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/9c73c1aa-3599-11e5-acd8-0e4fddd5de28/viz.json">
-    <a href="#">Median household income (1990)</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/becd2fca-3599-11e5-9dbf-0e0c41326911/viz.json">
-    <a href="#">Median household income (2000)</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/ea62cdc0-3599-11e5-9c5d-0e018d66dc29/viz.json">
-    <a href="#">Median household income (2013)</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/10f600a6-359a-11e5-adcc-0e9d821ea90d/viz.json">
-    <a href="#">Change in median household income (%, 1990-2000)</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/3250f9fe-359a-11e5-a343-0e853d047bba/viz.json">
-    <a href="#">Change in median household income (%, 2000-2013)</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/5267e5b8-359a-11e5-87fb-0e0c41326911/viz.json">
-    <a href="#">Market-rate units as % of new building (1990-2000)</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/8b414852-359a-11e5-9435-0e4fddd5de28/viz.json">
-    <a href="#">Market-rate units as % of new building (2000-2013)</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/a3819c32-359a-11e5-ab62-0e9d821ea90d/viz.json">
-    <a href="#">Change in median home sale price (%, 1990-2000)</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/f3360c86-359a-11e5-a343-0e853d047bba/viz.json">
-    <a href="#">Change in median home sale price (%, 2000-2013)</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/1dedc96e-359b-11e5-ae41-0e853d047bba/viz.json">
-    <a href="#">Change in median home value (%, 1990-2000)</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/4b905f62-359b-11e5-ae41-0e853d047bba/viz.json">
-    <a href="#">Change in median home value (%, 2000-2013)</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/7492b086-359b-11e5-84af-0e0c41326911/viz.json">
-    <a href="#">Gentrified between 1990 and 2000</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/fad41612-359b-11e5-8f88-0e9d821ea90d/viz.json">
-    <a href="#">Gentrified between 2000 and 2013</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/330fa92e-359c-11e5-9c5d-0e018d66dc29/viz.json">
-    <a href="#">Low-income in-migration (%, 2009)</a></li>
-    
-    <li data-url="https://cci-displacement.cartodb.com/api/v2/viz/5eaa5c82-359c-11e5-8bf3-0e4fddd5de28/viz.json">
-    <a href="#">Low-income in-migration (%, 2013)</a></li>
     
   </ul>
 </div>
@@ -347,130 +237,26 @@ and (max-width: 380px) {
 <!-- this button style is from the Bootstrap library -->
   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
     Limit by city or county...
+      
+<!-- these wont work until Nick enters the georeferencing info on his map,  -->
+      
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu scrollable-menu" id="geo-selector" aria-labelledby="dropdownMenuDivider">
     <li data-geo="all" class="active"><a href="#">SHOW ALL</a></li>   
     <li role="separator" class="divider"></li>
-    <li data-geo="county" data-value="Alameda"><a href="#">Alameda County</a></li>
-    <li data-geo="county" data-value="Contra Costa"><a href="#">Contra Costa County</a></li>
-    <li data-geo="county" data-value="Marin"><a href="#">Marin County</a></li>
-    <li data-geo="county" data-value="Napa"><a href="#">Napa County</a></li>
-    <li data-geo="county" data-value="San Francisco"><a href="#">San Francisco County</a></li>
-    <li data-geo="county" data-value="San Mateo"><a href="#">San Mateo County</a></li>
-    <li data-geo="county" data-value="Santa Clara"><a href="#">Santa Clara County</a></li>
-    <li data-geo="county" data-value="Solano"><a href="#">Solano County</a></li>
-    <li data-geo="county" data-value="Sonoma"><a href="#">Sonoma County</a></li>
+    <li data-geo="county" data-value="Montgomery"><a href="#">Montgomery County</a></li>
+    <li data-geo="county" data-value="Prince George's"><a href="#">Prince George's County</a></li>
+
+      
     <li role="separator" class="divider"></li>
-    <li data-geo="city"><a href="#">Alameda</a></li>
-    <li data-geo="city"><a href="#">Alameda County Unincorporated</a></li>
-    <li data-geo="city"><a href="#">Albany</a></li>
-    <li data-geo="city"><a href="#">American Canyon</a></li>
-    <li data-geo="city"><a href="#">Antioch</a></li>
-    <li data-geo="city"><a href="#">Atherton</a></li>
-    <li data-geo="city"><a href="#">Belmont</a></li>
-    <li data-geo="city"><a href="#">Belvedere</a></li>
-    <li data-geo="city"><a href="#">Benicia</a></li>
-    <li data-geo="city"><a href="#">Berkeley</a></li>
-    <li data-geo="city"><a href="#">Brentwood</a></li>
-    <li data-geo="city"><a href="#">Brisbane</a></li>
-    <li data-geo="city"><a href="#">Burlingame</a></li>
-    <li data-geo="city"><a href="#">Calistoga</a></li>
-    <li data-geo="city"><a href="#">Campbell</a></li>
-    <li data-geo="city"><a href="#">Clayton</a></li>
-    <li data-geo="city"><a href="#">Cloverdale</a></li>
-    <li data-geo="city"><a href="#">Colma</a></li>
-    <li data-geo="city"><a href="#">Concord</a></li>
-    <li data-geo="city"><a href="#">Contra Costa County Unincorporated</a></li>
-    <li data-geo="city"><a href="#">Corte Madera</a></li>
-    <li data-geo="city"><a href="#">Cotati</a></li>
-    <li data-geo="city"><a href="#">Cupertino</a></li>
-    <li data-geo="city"><a href="#">Daly City</a></li>
-    <li data-geo="city"><a href="#">Danville</a></li>
-    <li data-geo="city"><a href="#">Dixon</a></li>
-    <li data-geo="city"><a href="#">Dublin</a></li>
-    <li data-geo="city"><a href="#">East Palo Alto</a></li>
-    <li data-geo="city"><a href="#">El Cerrito</a></li>
-    <li data-geo="city"><a href="#">Emeryville</a></li>
-    <li data-geo="city"><a href="#">Fairfax</a></li>
-    <li data-geo="city"><a href="#">Fairfield</a></li>
-    <li data-geo="city"><a href="#">Foster City</a></li>
-    <li data-geo="city"><a href="#">Fremont</a></li>
-    <li data-geo="city"><a href="#">Gilroy</a></li>
-    <li data-geo="city"><a href="#">Half Moon Bay</a></li>
-    <li data-geo="city"><a href="#">Hayward</a></li>
-    <li data-geo="city"><a href="#">Healdsburg</a></li>
-    <li data-geo="city"><a href="#">Hercules</a></li>
-    <li data-geo="city"><a href="#">Hillsborough</a></li>
-    <li data-geo="city"><a href="#">Lafayette</a></li>
-    <li data-geo="city"><a href="#">Larkspur</a></li>
-    <li data-geo="city"><a href="#">Livermore</a></li>
-    <li data-geo="city"><a href="#">Los Altos</a></li>
-    <li data-geo="city"><a href="#">Los Altos Hills</a></li>
-    <li data-geo="city"><a href="#">Los Gatos</a></li>
-    <li data-geo="city"><a href="#">Marin County Unincorporated</a></li>
-    <li data-geo="city"><a href="#">Martinez</a></li>
-    <li data-geo="city"><a href="#">Menlo Park</a></li>
-    <li data-geo="city"><a href="#">Mill Valley</a></li>
-    <li data-geo="city"><a href="#">Millbrae</a></li>
-    <li data-geo="city"><a href="#">Milpitas</a></li>
-    <li data-geo="city"><a href="#">Monte Sereno</a></li>
-    <li data-geo="city"><a href="#">Moraga</a></li>
-    <li data-geo="city"><a href="#">Morgan Hill</a></li>
-    <li data-geo="city"><a href="#">Mountain View</a></li>
-    <li data-geo="city"><a href="#">Napa</a></li>
-    <li data-geo="city"><a href="#">Napa County Unincorporated</a></li>
-    <li data-geo="city"><a href="#">Newark</a></li>
-    <li data-geo="city"><a href="#">Novato</a></li>
-    <li data-geo="city"><a href="#">Oakland</a></li>
-    <li data-geo="city"><a href="#">Oakley</a></li>
-    <li data-geo="city"><a href="#">Orinda</a></li>
-    <li data-geo="city"><a href="#">Pacifica</a></li>
-    <li data-geo="city"><a href="#">Palo Alto</a></li>
-    <li data-geo="city"><a href="#">Petaluma</a></li>
-    <li data-geo="city"><a href="#">Piedmont</a></li>
-    <li data-geo="city"><a href="#">Pinole</a></li>
-    <li data-geo="city"><a href="#">Pittsburg</a></li>
-    <li data-geo="city"><a href="#">Pleasant Hill</a></li>
-    <li data-geo="city"><a href="#">Pleasanton</a></li>
-    <li data-geo="city"><a href="#">Portola Valley</a></li>
-    <li data-geo="city"><a href="#">Redwood City</a></li>
-    <li data-geo="city"><a href="#">Richmond</a></li>
-    <li data-geo="city"><a href="#">Rio Vista</a></li>
-    <li data-geo="city"><a href="#">Rohnert Park</a></li>
-    <li data-geo="city"><a href="#">Ross</a></li>
-    <li data-geo="city"><a href="#">San Anselmo</a></li>
-    <li data-geo="city"><a href="#">San Bruno</a></li>
-    <li data-geo="city"><a href="#">San Carlos</a></li>
-    <li data-geo="city"><a href="#">San Francisco</a></li>
-    <li data-geo="city"><a href="#">San Jose</a></li>
-    <li data-geo="city"><a href="#">San Leandro</a></li>
-    <li data-geo="city"><a href="#">San Mateo</a></li>
-    <li data-geo="city"><a href="#">San Mateo County Unincorporated</a></li>
-    <li data-geo="city"><a href="#">San Pablo</a></li>
-    <li data-geo="city"><a href="#">San Rafael</a></li>
-    <li data-geo="city"><a href="#">San Ramon</a></li>
-    <li data-geo="city"><a href="#">Santa Clara</a></li>
-    <li data-geo="city"><a href="#">Santa Clara County Unincorporated</a></li>
-    <li data-geo="city"><a href="#">Santa Rosa</a></li>
-    <li data-geo="city"><a href="#">Saratoga</a></li>
-    <li data-geo="city"><a href="#">Sausalito</a></li>
-    <li data-geo="city"><a href="#">Sebastopol</a></li>
-    <li data-geo="city"><a href="#">Solano County Unincorporated</a></li>
-    <li data-geo="city"><a href="#">Sonoma</a></li>
-    <li data-geo="city"><a href="#">Sonoma County Unincorporated</a></li>
-    <li data-geo="city"><a href="#">South San Francisco</a></li>
-    <li data-geo="city"><a href="#">St. Helena</a></li>
-    <li data-geo="city"><a href="#">Suisun City</a></li>
-    <li data-geo="city"><a href="#">Sunnyvale</a></li>
-    <li data-geo="city"><a href="#">Tiburon</a></li>
-    <li data-geo="city"><a href="#">Union City</a></li>
-    <li data-geo="city"><a href="#">Vacaville</a></li>
-    <li data-geo="city"><a href="#">Vallejo</a></li>
-    <li data-geo="city"><a href="#">Walnut Creek</a></li>
-    <li data-geo="city"><a href="#">Windsor</a></li>
-    <li data-geo="city"><a href="#">Woodside</a></li>
-    <li data-geo="city"><a href="#">Yountville</a></li>  </ul>
+    
+    <li data-geo="city"><a href="#">Silver Spring</a></li>
+    <li data-geo="city"><a href="#">Bethesda</a></li>
+    <li data-geo="city"><a href="#">Langley Park</a></li>
+    <li data-geo="city"><a href="#">New Carrollton</a></li>
+
+    </ul>
 </div>
 </div>
 
@@ -480,52 +266,54 @@ and (max-width: 380px) {
 
 <div id="textContent">
 	
-<div><h3>Mapping Displacement and Gentrification in the San Francisco Bay Area</h3></div>
+<div><h3>Mapping Gentrification Risk in the Purple Line Corridor</h3></div>
 
 <div><a href="http://communityinnovation.berkeley.edu/uploads/Table.png" target="_blank"><img class="figure mobile-hide" src="http://communityinnovation.berkeley.edu/uploads/Table.png"></a>
 
-The Bay Area’s booming jobs and housing market necessitates a careful look at the causes and consequences of neighborhood change to protect residents that are most vulnerable to potentially being displaced. Wages for the Bay Area’s low income residents have not kept pace with the sky-rocketing housing prices resulting in massive demographic shifts in the area.
+The Purple Line Corridor is at risk for gentrification because x y and z
 
 <br><br>
-UC Berkeley analyzed regional data on housing, income and other demographics to better understand and predict where gentrification and displacement is happening and will likely occur in the future. This analysis, which is summarized in the interactive maps, will allow communities to better characterize their experience and risk of displacement and to stimulate action. The analysis behind these maps was validated through in-depth case studies of 9 Bay Area communities and with the support and advice of the <a href="http://planbayarea.org/regional-initiatives/Bay-Area-Prosperity-Plan.html">Regional Prosperity Plan</a> at the <a href="http://www.mtc.ca.gov/">Metropolitan Transportation Commission</a>. In developing 8 neighborhood displacement typologies, communities can better understand where they’re at and develop actions to prevent from advancing in the stages of gentrification and displacement.
+NCSG compiled a Gentrification Risk index for understanding where displacement is most likely to happen and 
 </div>
 
 <div class="larger">
 <br><h3>Key Findings</h3>
 <ul>
-<li>In 2013, 48 percent of census tracts and more than 53 percent of low-income households lived in neighborhoods at risk of or already experiencing displacement and gentrification pressures.<br></li>
-<li>Neighborhoods with rail stations, historic housing stock, an abundance of market rate developments and rising housing prices are especially at risk of losing low-income households.<br></li>
-<li>Low income neighborhoods are not the only ones experiencing displacement pressures &ndash; many higher income neighborhoods that still house low income households are also rapidly losing low income population.<br></li>
-<li>The number of tracts at risk of displacement are 125% higher than the numbers already experiencing them, indicating that the transformation of the Bay Area will continue to accelerate.<br></li>
+<li>finding one<br></li>
+<li>finding two<br></li>
+<li>finding three<br></li>
+<li>finding four<br></li>
 </ul></div>
 
 <div><br><h3>Data and Documentation</h3>
-<ul><li><a href="http://iurd.berkeley.edu/uploads/CCI_Final_Report_07_23_15.pdf">Methodology & results of the Regional Early Warning System</a> [PDF]</li>
+<ul><li><a href="#">Methodology &amp; results of the Regional Early Warning System</a> [PDF]</li>
 <li><a href="http://communityinnovation.berkeley.edu/uploads/CCI_REWS_data_2015-08-21.xlsx">Download all data series from map</a> [XLS]</li></ul>
 </div>
 
-<div><br><h3>Additional Resources from UCB Urban Displacement Project</h3>
+<div><br><h3>Additional Resources from NCSG's Gentrification Risk Study and the Purple Line Corridor Coalition</h3>
 <ul>
-<li><a href="http://iurd.berkeley.edu/new-methodology-for-analyzing-displacement">Developing a New Methodology for Analyzing Potential Displacement</a></li>
-<li><a href="http://iurd.berkeley.edu/uploads/Displacement_Lit_Review_Final.pdf">Literature review on gentrification, displacement and the relationship to public and private investment</a> [PDF]</li>
-<li><a href="http://communityinnovation.berkeley.edu/case-studies-on-gentrification-and-displacement-pressures-in-the-bay-area">Case studies on gentrification and displacement pressures in 9 neighborhoods in the Bay Area</a></li>
+<li>Methodology</li>
+<li>Data</li>
+<li>Other</li>
 </ul>
 </div>
 
 <div class="smaller">
 <br><h4>Notes</h4>
-<ul><li>Data sources include the U.S. Census, American Community Survey (ACS), California Housing Partnership Corporation (CHPC), National Establishment Time-Series (NETS), and DataQuick. Please see our downloadable data table above for more details. 
+<ul><li>Data sources include the U.S. Census, American Community Survey (ACS), Maryland Quarterly Census of Employment and Wages (QCEW), and Longitudinal Employment Household Dynamics (LEHD). Please see our downloadable data table above for more details. 
 </li></ul></div>
 
 <div><br><br></div>
+    
+    </div>
 
 <script>
 
 // set the initial map options and url here
 var INITIAL_MAP_SETTINGS = {
 	detectRetina: true,
-	center_lat: 37.8,
-	center_lon: -122.3,
+	center_lat: 39,
+	center_lon: -77,
 	zoom: 11
 }
 var INITIAL_VISJSON_URL = $('#layer-selector .active').data('url');
@@ -604,7 +392,7 @@ $('#geo-selector li').click(function() {
 });
 
 function zoomToExtent(query) {
-	var sql = new cartodb.SQL({user: 'cci-displacement'});
+	var sql = new cartodb.SQL({user: 'cci-displacement'});  // this needs to be changed to Nick's username, but doing so now (while there is no SQL associated with his account) will break the map so leaving as-is for now
 	sql.getBounds(query).done(function(bounds) {
         activeVis.getNativeMap().fitBounds(bounds);
     });
